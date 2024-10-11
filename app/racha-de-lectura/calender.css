@@ -1,0 +1,34 @@
+.react-calendar {
+  display: contents !important;
+}
+
+.react-calendar__tile {
+  background: #f3f4f6 !important;  /* Inactive day background color */
+  color: #000;                      /* Inactive day text color */
+}
+
+/* Active days (fetched from API) */
+.react-calendar__tile.active-day {
+  background-color: black !important;  /* Active day background color */
+  color: white !important;             /* Active day text color */
+}
+
+/* The current day (today) */
+.react-calendar__tile--now {
+  background: #f3f4f6 !important;
+  border: 1px solid #ddd;
+}
+
+/* Default active day behavior (if user selects a date) */
+.react-calendar__tile--active {
+  background: black !important;
+  color: white !important;
+}
+
+
+/* Add this in your CSS file */
+.react-calendar__tile--highlight {
+  background-color: #ffcc00 !important;
+  color: white;
+  border-radius: 50%;
+}

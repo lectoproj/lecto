@@ -1,0 +1,764 @@
+{
+  "id": "accab1b6-5568-4d07-acd2-fa6c6898b9b9",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.account": {
+      "name": "account",
+      "schema": "",
+      "columns": {
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "provider": {
+          "name": "provider",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "providerAccountId": {
+          "name": "providerAccountId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "refresh_token": {
+          "name": "refresh_token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "access_token": {
+          "name": "access_token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "token_type": {
+          "name": "token_type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "scope": {
+          "name": "scope",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_token": {
+          "name": "id_token",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "session_state": {
+          "name": "session_state",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "account_userId_user_id_fk": {
+          "name": "account_userId_user_id_fk",
+          "tableFrom": "account",
+          "tableTo": "user",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "account_provider_providerAccountId_pk": {
+          "name": "account_provider_providerAccountId_pk",
+          "columns": [
+            "provider",
+            "providerAccountId"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.authenticator": {
+      "name": "authenticator",
+      "schema": "",
+      "columns": {
+        "credentialID": {
+          "name": "credentialID",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "providerAccountId": {
+          "name": "providerAccountId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "credentialPublicKey": {
+          "name": "credentialPublicKey",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "counter": {
+          "name": "counter",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "credentialDeviceType": {
+          "name": "credentialDeviceType",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "credentialBackedUp": {
+          "name": "credentialBackedUp",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "transports": {
+          "name": "transports",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "authenticator_userId_user_id_fk": {
+          "name": "authenticator_userId_user_id_fk",
+          "tableFrom": "authenticator",
+          "tableTo": "user",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "authenticator_userId_credentialID_pk": {
+          "name": "authenticator_userId_credentialID_pk",
+          "columns": [
+            "userId",
+            "credentialID"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "authenticator_credentialID_unique": {
+          "name": "authenticator_credentialID_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "credentialID"
+          ]
+        }
+      }
+    },
+    "public.categoria_lectura": {
+      "name": "categoria_lectura",
+      "schema": "",
+      "columns": {
+        "id_categoria": {
+          "name": "id_categoria",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nombre_categoria": {
+          "name": "nombre_categoria",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.evaluacion": {
+      "name": "evaluacion",
+      "schema": "",
+      "columns": {
+        "id_evaluacion": {
+          "name": "id_evaluacion",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "fecha_evaluacion": {
+          "name": "fecha_evaluacion",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "puntaje": {
+          "name": "puntaje",
+          "type": "numeric(4, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "retroalimentacion": {
+          "name": "retroalimentacion",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_usuario": {
+          "name": "id_usuario",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_lectura": {
+          "name": "id_lectura",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "evaluacion_id_usuario_user_id_fk": {
+          "name": "evaluacion_id_usuario_user_id_fk",
+          "tableFrom": "evaluacion",
+          "tableTo": "user",
+          "columnsFrom": [
+            "id_usuario"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "evaluacion_id_lectura_lectura_id_lectura_fk": {
+          "name": "evaluacion_id_lectura_lectura_id_lectura_fk",
+          "tableFrom": "evaluacion",
+          "tableTo": "lectura",
+          "columnsFrom": [
+            "id_lectura"
+          ],
+          "columnsTo": [
+            "id_lectura"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.lectura": {
+      "name": "lectura",
+      "schema": "",
+      "columns": {
+        "id_lectura": {
+          "name": "id_lectura",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nombre_lectura": {
+          "name": "nombre_lectura",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lecturas3": {
+          "name": "lecturas3",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_usuario": {
+          "name": "id_usuario",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_categoria": {
+          "name": "id_categoria",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "lectura_id_usuario_user_id_fk": {
+          "name": "lectura_id_usuario_user_id_fk",
+          "tableFrom": "lectura",
+          "tableTo": "user",
+          "columnsFrom": [
+            "id_usuario"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "lectura_id_categoria_categoria_lectura_id_categoria_fk": {
+          "name": "lectura_id_categoria_categoria_lectura_id_categoria_fk",
+          "tableFrom": "lectura",
+          "tableTo": "categoria_lectura",
+          "columnsFrom": [
+            "id_categoria"
+          ],
+          "columnsTo": [
+            "id_categoria"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.preposttest": {
+      "name": "preposttest",
+      "schema": "",
+      "columns": {
+        "id_test_p": {
+          "name": "id_test_p",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pre_post": {
+          "name": "pre_post",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_evaluacion": {
+          "name": "id_evaluacion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "preposttest_id_evaluacion_evaluacion_id_evaluacion_fk": {
+          "name": "preposttest_id_evaluacion_evaluacion_id_evaluacion_fk",
+          "tableFrom": "preposttest",
+          "tableTo": "evaluacion",
+          "columnsFrom": [
+            "id_evaluacion"
+          ],
+          "columnsTo": [
+            "id_evaluacion"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.racha": {
+      "name": "racha",
+      "schema": "",
+      "columns": {
+        "id_racha": {
+          "name": "id_racha",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "fecha_rach": {
+          "name": "fecha_rach",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_usuario": {
+          "name": "id_usuario",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id_evaluacion": {
+          "name": "id_evaluacion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "racha_id_usuario_user_id_fk": {
+          "name": "racha_id_usuario_user_id_fk",
+          "tableFrom": "racha",
+          "tableTo": "user",
+          "columnsFrom": [
+            "id_usuario"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "racha_id_evaluacion_evaluacion_id_evaluacion_fk": {
+          "name": "racha_id_evaluacion_evaluacion_id_evaluacion_fk",
+          "tableFrom": "racha",
+          "tableTo": "evaluacion",
+          "columnsFrom": [
+            "id_evaluacion"
+          ],
+          "columnsTo": [
+            "id_evaluacion"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.session": {
+      "name": "session",
+      "schema": "",
+      "columns": {
+        "sessionToken": {
+          "name": "sessionToken",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "expires": {
+          "name": "expires",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "session_userId_user_id_fk": {
+          "name": "session_userId_user_id_fk",
+          "tableFrom": "session",
+          "tableTo": "user",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.testinferencia": {
+      "name": "testinferencia",
+      "schema": "",
+      "columns": {
+        "id_test_inter": {
+          "name": "id_test_inter",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pregunta": {
+          "name": "pregunta",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "feedback": {
+          "name": "feedback",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "respuesta": {
+          "name": "respuesta",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_evaluacion": {
+          "name": "id_evaluacion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "testinferencia_id_evaluacion_evaluacion_id_evaluacion_fk": {
+          "name": "testinferencia_id_evaluacion_evaluacion_id_evaluacion_fk",
+          "tableFrom": "testinferencia",
+          "tableTo": "evaluacion",
+          "columnsFrom": [
+            "id_evaluacion"
+          ],
+          "columnsTo": [
+            "id_evaluacion"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.testobtencioninfo": {
+      "name": "testobtencioninfo",
+      "schema": "",
+      "columns": {
+        "id_test_oi": {
+          "name": "id_test_oi",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pregunta": {
+          "name": "pregunta",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "res_selec": {
+          "name": "res_selec",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "res_correc": {
+          "name": "res_correc",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "op_1": {
+          "name": "op_1",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "op_2": {
+          "name": "op_2",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "op_3": {
+          "name": "op_3",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "op_4": {
+          "name": "op_4",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "feedback": {
+          "name": "feedback",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "acierto": {
+          "name": "acierto",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_evaluacion": {
+          "name": "id_evaluacion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "testobtencioninfo_id_evaluacion_evaluacion_id_evaluacion_fk": {
+          "name": "testobtencioninfo_id_evaluacion_evaluacion_id_evaluacion_fk",
+          "tableFrom": "testobtencioninfo",
+          "tableTo": "evaluacion",
+          "columnsFrom": [
+            "id_evaluacion"
+          ],
+          "columnsTo": [
+            "id_evaluacion"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.testreflexion": {
+      "name": "testreflexion",
+      "schema": "",
+      "columns": {
+        "id_test_refle": {
+          "name": "id_test_refle",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "pregunta": {
+          "name": "pregunta",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "feedback": {
+          "name": "feedback",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "respuesta": {
+          "name": "respuesta",
+          "type": "varchar(300)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id_evaluacion": {
+          "name": "id_evaluacion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "testreflexion_id_evaluacion_evaluacion_id_evaluacion_fk": {
+          "name": "testreflexion_id_evaluacion_evaluacion_id_evaluacion_fk",
+          "tableFrom": "testreflexion",
+          "tableTo": "evaluacion",
+          "columnsFrom": [
+            "id_evaluacion"
+          ],
+          "columnsTo": [
+            "id_evaluacion"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.user": {
+      "name": "user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "emailVerified": {
+          "name": "emailVerified",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image": {
+          "name": "image",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "fecha_nacimiento": {
+          "name": "fecha_nacimiento",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_tutor": {
+          "name": "email_tutor",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "nombre_tutor": {
+          "name": "nombre_tutor",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

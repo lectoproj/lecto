@@ -29,6 +29,7 @@ const LecturasPage = async () => {
   //   selectedCategorias.push(allCategorias.splice(randomIndex, 1)[0]);
   // }
 
+  
     // Selecciona 4 categorías aleatorias
 while (selectedCategorias.length < 4 && allCategorias.length > 0) {
   const randomIndex = Math.floor(Math.random() * allCategorias.length);

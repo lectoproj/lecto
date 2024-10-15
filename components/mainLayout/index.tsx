@@ -8,11 +8,11 @@ import Web from '@/components/sidebar/web';
 import Navbar from '@/components/navbar';
 import { AuthContext } from 'app/contextApi/authContext';
 import UserInfo from '../getUserInfo';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
   const pathname = usePathname();
-  console.log('🚀 ~ MainLayout ~ pathname:', pathname);
   const { data: session } = useSession(); // Use the session on the client side
   const user = session?.user;
 
@@ -21,10 +21,17 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   // Check if authContext is defined before destructuring
   const setUserInfo = authContext?.setUserInfo;
   const userInfo = authContext?.userInfo;
-  // console.log("🚀 ~ MainLayout ~ userInfo:", userInfo)
+
+  useEffect(()=> {
+    if (userInfo?.normalCount === 8) {
+        if (pathname === '/lecturas') {
+            router.push('/posttest')
+        }
+
+    }
+  },[userInfo])
 
   useEffect(() => {
-    console.log('🚀 ~ useEffect ~ user-:', user);
     if (user) {
       getUserInfo();
     }

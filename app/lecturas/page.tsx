@@ -24,10 +24,21 @@ const LecturasPage = async () => {
   const allCategorias = await db.query.categoria_lectura.findMany();
 
   const selectedCategorias = [];
-  while (selectedCategorias.length < 4 && allCategorias.length > 0) {
-    const randomIndex = Math.floor(Math.random() * allCategorias.length);
-    selectedCategorias.push(allCategorias.splice(randomIndex, 1)[0]);
+  // while (selectedCategorias.length < 4 && allCategorias.length > 0) {
+  //   const randomIndex = Math.floor(Math.random() * allCategorias.length);
+  //   selectedCategorias.push(allCategorias.splice(randomIndex, 1)[0]);
+  // }
+
+    // Selecciona 4 categorías aleatorias
+while (selectedCategorias.length < 4 && allCategorias.length > 0) {
+  const randomIndex = Math.floor(Math.random() * allCategorias.length);
+  const selected = allCategorias.splice(randomIndex, 1)[0];
+  // Verifica si el id es 0
+  if (selected.id_categoria === 0) {
+    continue; // Saltar esta iteración y no guarda
   }
+  selectedCategorias.push(selected);
+}
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">

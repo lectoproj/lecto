@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Home, BookPlus, Settings } from 'lucide-react';
+import { Home, BookPlus, User, Bookmark, CopyCheck, Gem} from 'lucide-react';
 import { UsersIcon } from '@/components/icons';
 import { NavItem } from './nav-item';
 import { AuthContext } from 'app/contextApi/authContext';
@@ -27,32 +27,30 @@ const Web = () => {
                     <Home className="h-4 w-4 text-green-500" />
                     Inicio
                 </NavItem>
-                <NavItem href="/users">
-                    <UsersIcon className="h-4 w-4 text-green-500" />
-                    Usuario
-                </NavItem>
-                <NavItem href="/settings">
-                    <Settings className="h-4 w-4 text-green-500" />
-                    Configuracion
-                </NavItem>
                 
+                {showLecturas && (
+                    <NavItem href="/lecturas">
+                        <BookPlus className="h-4 w-4 text-green-500" />
+                        Lectura diaria
+                    </NavItem>
+                )}
                 {userInfo?.email ? (   
                     <>                    
 
                 <NavItem href="/evaluaciones-guardadas">
-                    <BookPlus className="h-4 w-4 text-green-500" />
-                    Evaluaciones guardadas
+                    <Bookmark className="h-4 w-4 text-green-500" />
+                    Historial de evaluaciones
                 </NavItem>
                 <NavItem href="/perfil">
-                    <BookPlus className="h-4 w-4 text-green-500" />
+                    <User className="h-4 w-4 text-green-500" />
                     Perfil
                 </NavItem>
                 <NavItem href="/salon-de-logros">
-                    <BookPlus className="h-4 w-4 text-green-500" />
+                    <Gem className="h-4 w-4 text-green-500" />
                     Salón de logros
                 </NavItem>
                 <NavItem href="/racha-de-lectura">
-                    <BookPlus className="h-4 w-4 text-green-500" />
+                    <CopyCheck className="h-4 w-4 text-green-500" />
                     Racha de lectura
                 </NavItem>
                 </>): null
@@ -61,21 +59,16 @@ const Web = () => {
 
                     <NavItem href="/pretest">
                         <BookPlus className="h-4 w-4 text-green-500" />
-                        Pretest Evaluation
+                        Tu primera evaluación
                     </NavItem>
                 )}
                 {showPosttest && (
                     <NavItem href="/posttest">
                         <BookPlus className="h-4 w-4 text-green-500" />
-                        Posttest Evaluation
+                        Evaluación de control
                     </NavItem>
                 )}
-                {showLecturas && (
-                    <NavItem href="/lecturas">
-                        <BookPlus className="h-4 w-4 text-green-500" />
-                        Lecturas
-                    </NavItem>
-                )}
+                
                 
             </nav>
         </div>

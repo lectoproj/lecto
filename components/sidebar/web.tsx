@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Home, BookPlus, User, Bookmark, CopyCheck, Gem} from 'lucide-react';
+import { Home, BookPlus, User, Bookmark, CopyCheck, Gem, MessageCircleQuestion} from 'lucide-react';
 import { UsersIcon } from '@/components/icons';
 import { NavItem } from './nav-item';
 import { AuthContext } from 'app/contextApi/authContext';
@@ -68,7 +68,10 @@ const Web = () => {
                         Evaluación de control
                     </NavItem>
                 )}
-                
+                <NavItem href="/qa">
+                        <MessageCircleQuestion className="h-4 w-4" />
+                        Preguntas frecuentes
+                </NavItem>
                 
             </nav>
         </div>

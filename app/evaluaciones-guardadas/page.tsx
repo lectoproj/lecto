@@ -82,7 +82,7 @@ const EvaluacionesPage = () => {
 
   // Loading state rendering
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Cargando...</div>;
   }
 
   // Error state rendering

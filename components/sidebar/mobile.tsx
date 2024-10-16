@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Home, Menu, BookPlus, User, Bookmark, CopyCheck, Gem } from 'lucide-react';
+import { Home, Menu, BookPlus, User, Bookmark, CopyCheck, Gem, MessageCircleQuestion } from 'lucide-react';
 import { Logo, UsersIcon } from '@/components/icons';
 import { NavItem } from './nav-item';
 import { AuthContext } from 'app/contextApi/authContext';
@@ -86,7 +86,10 @@ const Mobile = () => {
                             Evaluación de control
                         </NavItem>
                     )}
-                    
+                    <NavItem href="/qa">
+                        <MessageCircleQuestion className="h-4 w-4" />
+                        Preguntas frecuentes
+                    </NavItem>
                     </nav>
                 </div>
                 </div>

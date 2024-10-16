@@ -38,7 +38,7 @@ export const GET = async (req: Request) => {
 
         // If no evaluations found
         if (evaluaciones.length === 0) {
-            return NextResponse.json({ message: 'No evaluations found for the user' }, { status: 401 });
+            return NextResponse.json({ message: 'Aún no existen evaluaciones. Realizar las lecturas!' }, { status: 401 });
         }
 
         // Iterate over each evaluacion to get test submissions

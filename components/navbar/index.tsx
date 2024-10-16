@@ -15,7 +15,7 @@ export default function Navbar() {
     return (
       <Link className={buttonVariants({ variant: "outline" })} href="/signin">
         <LogIn className="mr-2 h-4 w-4" />
-        Sign in
+        Iniciar Sesión
       </Link>
     );
   }
@@ -24,7 +24,7 @@ export default function Navbar() {
     <div className="flex items-center gap-4">
       <Button variant="outline" onClick={() => signOut()}>
         <LogOut className="mr-2 h-4 w-4" /> 
-        Sign Out
+        Cerrar Sesión
       </Button>
       <Image
         className="h-8 w-8 rounded-full"

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { Home, Menu, BookPlus, Settings } from 'lucide-react';
+import { Home, Menu, BookPlus, User, Bookmark, CopyCheck, Gem } from 'lucide-react';
 import { Logo, UsersIcon } from '@/components/icons';
 import { NavItem } from './nav-item';
 import { AuthContext } from 'app/contextApi/authContext';
@@ -33,10 +33,10 @@ const Mobile = () => {
             </SheetTrigger>
             <SheetContent
                 side="left"
-                className="p-0 bg-gradient-to-b from-blue-300 via-purple-300 to-purple-200 dark:bg-gradient-to-b dark:from-blue-300 dark:via-purple-300 dark:to-purple-200"
+                className="p-0"
             >
                 <div className="flex h-full max-h-screen flex-col gap-2">
-                <div className="flex h-[60px] items-center border-b px-5 bg-gradient-to-r from-purple-300 via-purple-200 to-blue-300">
+                <div className="flex h-[60px] items-center border-b px-5 ">
                     <Link className="flex items-center gap-2 font-semibold" href="/">
                     <Logo />
                     <span className="text-green-600">Lecto</span>
@@ -48,50 +48,45 @@ const Mobile = () => {
                         <Home className="h-4 w-4 text-green-500" />
                         Inicio
                     </NavItem>
-                    <NavItem href="/users">
-                        <UsersIcon className="h-4 w-4 text-green-500" />
-                        Usuario
-                    </NavItem>
-                    <NavItem href="/settings">
-                        <Settings className="h-4 w-4 text-green-500" />
-                        Configuracion
-                    </NavItem>
-                    {userInfo?.preCount < 1 && (
-                        <>
-                    <NavItem href="/evaluaciones-guardadas">
-                    <BookPlus className="h-4 w-4 text-green-500" />
-                    Evaluaciones guardadas
-                </NavItem>
-                <NavItem href="/perfil">
-                        <BookPlus className="h-4 w-4 text-green-500" />
-                        Perfil
-                    </NavItem>
-                    <NavItem href="/salon-de-logros">
-                    <BookPlus className="h-4 w-4 text-green-500" />
-                    Salón de logros
-                </NavItem>
-                <NavItem href="/racha-de-lectura">
-                    <BookPlus className="h-4 w-4 text-green-500" />
-                    Racha de lectura
-                </NavItem>
-                        <NavItem href="/pretest">
-                            <BookPlus className="h-4 w-4 text-green-500" />
-                            Pretest Evaluation
-                        </NavItem>
-                        </>
-                    )}
-                    {showPosttest && (
-                        <NavItem href="/posttest">
-                            <BookPlus className="h-4 w-4 text-green-500" />
-                            Posttest Evaluation
-                        </NavItem>
-                    )}
                     {showLecturas && (
                         <NavItem href="/lecturas">
                             <BookPlus className="h-4 w-4 text-green-500" />
-                            Lecturas
+                            Lectura diaria
                         </NavItem>
                     )}
+                    {userInfo?.email ? (
+                        <>
+                    <NavItem href="/evaluaciones-guardadas">
+                        <Bookmark className="h-4 w-4 text-green-500" />
+                        Historial de evaluaciones
+                    </NavItem>
+                    <NavItem href="/perfil">
+                        <User className="h-4 w-4 text-green-500" />
+                        Perfil
+                    </NavItem>
+                    <NavItem href="/salon-de-logros">
+                        <Gem className="h-4 w-4 text-green-500" />
+                        Salón de logros
+                    </NavItem>
+                    <NavItem href="/racha-de-lectura">
+                        <CopyCheck className="h-4 w-4 text-green-500" />
+                        Racha de lectura
+                    </NavItem>
+                    </>): null
+                    }
+                    {userInfo?.preCount < 1 && (
+                        <NavItem href="/pretest">
+                            <BookPlus className="h-4 w-4 text-green-500" />
+                            Tu primera evaluación
+                        </NavItem>
+                        )}
+                    {showPosttest && (
+                        <NavItem href="/posttest">
+                            <BookPlus className="h-4 w-4 text-green-500" />
+                            Evaluación de control
+                        </NavItem>
+                    )}
+                    
                     </nav>
                 </div>
                 </div>

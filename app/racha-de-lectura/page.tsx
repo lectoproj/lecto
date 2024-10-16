@@ -110,9 +110,9 @@ export default function CalendarPage() {
   return (
     <main className="flex flex-col items-center p-6 from-purple-400 to-blue-300 min-h-screen">
       <div className="bg-white p-6 rounded-lg shadow-md text-center w-full max-w-md">
-        <h1 className="text-2xl font-semibold mb-4">Learning Streak</h1>
+        <h1 className="text-2xl font-semibold mb-4">Racha de aprendizaje</h1>
         <p className="text-gray-600 mb-6">
-          Your active days are highlighted on the calendar.
+          Los días que estuviste activo se muestran en tu calendario
         </p>
 
         {/* Calendar component with margin */}
@@ -127,11 +127,11 @@ export default function CalendarPage() {
         <div className="flex justify-center mt-4 space-x-4">
           <div className="flex items-center">
             <span className="w-4 h-4 bg-black block mr-2"></span>
-            Active days
+            Lectura hecha
           </div>
           <div className="flex items-center">
             <span className="w-4 h-4 bg-gray-300 block mr-2"></span>
-            Inactive days
+            Lectura no hecha
           </div>
         </div>
       </div>

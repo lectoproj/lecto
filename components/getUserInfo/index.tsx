@@ -78,20 +78,20 @@ const UserInfo: React.FC = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-r from-blue-300 via-purple-300 to-purple-200 flex items-center justify-center text-gray-500 text-sm">
+    <main className="min-h-screen flex items-center justify-center text-gray-500 text-sm">
       <form 
         onSubmit={handleFormData}
         className="bg-white shadow-lg rounded-md p-5 my-16 flex flex-col w-11/12 max-w-lg"
       >
         {userInfo && (
           <>
-            {renderInputField('name_tutor', 'Name Tutor', 'text', true)}
-            {renderInputField('email_tutor', 'Email Tutor', 'email', true)}
+            {renderInputField('name_tutor', 'Nombre del Tutor', 'text', true)}
+            {renderInputField('email_tutor', 'Email del Tutor', 'email', true)}
             {renderInputField('fecha_nacimiento', 'Fecha Nacimiento', 'date', true, current)}
           </>
         )}
 
-        <button type="submit" className="mt-5 bg-blue-500 py-3 rounded-md text-white">Submit</button>
+        <button type="submit" className="mt-5 bg-blue-500 py-3 rounded-md text-white">Enviar información de tutor</button>
       </form>
     </main>
   );

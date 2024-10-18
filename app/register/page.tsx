@@ -14,6 +14,10 @@ import {
   CardDescription
 } from '@/components/ui/card'; // Custom card component
 
+export const metadata = {
+  title: 'Registrate | Lecto'
+};
+
 export default function RegisterForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -165,14 +169,14 @@ export default function RegisterForm() {
             className="w-full"
             disabled={loading || !isFormValid}
           >
-            {loading ? 'Registering...' : 'Register'}
+            {loading ? 'Registering...' : 'Registrate'}
           </Button>
         </form>
 
         {/* Divider */}
         <div className="flex items-center justify-center my-4">
           <span className="border-t border-gray-300 w-full"></span>
-          <span className="px-4 text-gray-500">Or</span>
+          <span className="px-4 text-gray-500">O</span>
           <span className="border-t border-gray-300 w-full"></span>
         </div>
 
@@ -184,7 +188,7 @@ export default function RegisterForm() {
             onClick={() => handleSignIn('google')}
             disabled={loading || !isFormValid}
           >
-            {loading ? 'Loading...' : 'Sign in with Google'}
+            {loading ? 'Loading...' : 'Registrate con Google'}
           </Button>
         </div>
 

@@ -243,7 +243,7 @@ const EvaluacionPage: React.FC = () => {
         <>
           <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">
-              Question #{selectedQuestionIndex + 1}
+              Pregunta #{selectedQuestionIndex + 1}
             </h1>
           </div>
           <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
@@ -276,7 +276,7 @@ const EvaluacionPage: React.FC = () => {
               </div>
 
               <Button className="mt-3" onClick={SubmitAnswer}>
-                Next {loadingQuiz ? <LoadingSpinner /> : null}
+                Siguiente pregunta {loadingQuiz ? <LoadingSpinner /> : null}
               </Button>
             </div>
           </div>
@@ -284,14 +284,14 @@ const EvaluacionPage: React.FC = () => {
       ) : startQuiz == 'result' ? (
         <>
           <div className="flex items-center">
-            <h1 className="text-lg font-semibold md:text-2xl">Result</h1>
+            <h1 className="text-lg font-semibold md:text-2xl">Resultado</h1>
           </div>
           <div className="flex flex-col gap-10 items-center">
-            <p className="text-4xl text-black font-bold">¡Felicitaciones!</p>
+            <p className="text-4xl text-black font-bold">Completaste la evaluación!</p>
             <div className="w-[100px]">
               <TickLogo />
             </div>
-            <p className="text-lg">Has completado la evaluación con éxito.</p>
+            <p className="text-lg">Ya vimos tus respuestas, revisa tu retroalimentación.</p>
             <p className="text-4xl text-black font-bold">
               Puntos: {`${score?.gained}/${score?.total}`}
             </p>
@@ -301,7 +301,7 @@ const EvaluacionPage: React.FC = () => {
                 setStartQuiz('review');
               }}
             >
-              Ver Retroalimentación
+              Continuar
             </Button>
           </div>
         </>

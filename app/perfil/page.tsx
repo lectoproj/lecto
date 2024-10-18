@@ -2,6 +2,10 @@
 
 import React, { useEffect, useState } from "react"; // Import necessary hooks from React
 
+export const metadata = {
+  title: 'Mi perfil | Lecto'
+};
+
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);

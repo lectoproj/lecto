@@ -1,57 +1,52 @@
-<div align="center"><strong>Next.js 14 Admin Dashboard Template - Cambio prueba</strong></div>
+<div align="center"><strong>Manual de Lecto</strong></div>
 <div align="center">Built with the Next.js App Router</div>
 <br />
-<div align="center">
+<!-- <div align="center">
 <a href="https://next-admin-dash.vercel.app/">Demo</a>
 <span> · </span>
 <a href="https://vercel.com/templates/next.js/admin-dashboard-tailwind-postgres-react-nextjs">Clone & Deploy</a>
 <span>
-</div>
+</div> -->
 
-## Overview
+# Lecto: Aplicación Educativa con IA para Niños de Primaria
 
-This is a starter template using the following stack:
+Esta aplicación web educativa utiliza IA para generar lecturas personalizadas y evaluaciones interactivas dirigidas a niños de 10 años. Desarrollada en **Next.js**, con integración de **GPT-4** mediante el **AI SDK** de Vercel, ofrece contenido pedagógico adaptado a las necesidades de los estudiantes.
 
-- Framework - [Next.js 14](https://nextjs.org/)
-- Language - [TypeScript](https://www.typescriptlang.org)
-- Auth - [NextAuth.js](https://next-auth.js.org)
-- Database - [Postgres](https://vercel.com/postgres)
-- Deployment - [Vercel](https://vercel.com/docs/concepts/next.js/overview)
-- Styling - [Tailwind CSS](https://tailwindcss.com)
-- Components - [Shadcn UI](https://ui.shadcn.com/)
-- Analytics - [Vercel Analytics](https://vercel.com/analytics)
-- Formatting - [Prettier](https://prettier.io)
+## Características Principales
 
-This template uses the new Next.js App Router. This includes support for enhanced layouts, colocation of components, tests, and styles, component-level data fetching, and more.
+- **Generación de lecturas personalizadas**: Contenido adaptado a los intereses y nivel educativo de los estudiantes.
+- **Evaluaciones automáticas**: Preguntas de opción múltiple, completar espacios en blanco y respuesta abierta, con calificación automatizada.
+- **Retroalimentación personalizada**: Explicaciones detalladas sobre los errores de los estudiantes.
+- **Autenticación segura**: Login mediante credenciales y Google con **auth.js**.
+- **Base de datos**: Almacenamiento de evaluaciones y resultados para consultas futuras.
 
-## Getting Started
+## Tecnologías Utilizadas
 
-During the deployment, Vercel will prompt you to create a new Postgres database. This will add the necessary environment variables to your project.
+- **Next.js**: Framework de React para aplicaciones web.
+- **GPT-4**: IA utilizada para la generación de contenido educativo y validación de respuestas.
+- **Vercel AI SDK**: Conexión a la API de GPT-4 con respuestas en formato JSON estructurado.
+- **Auth.js**: Manejo de autenticación.
+- **Jira**: Gestión de incidencias y cambios en el proyecto.
 
-Inside the Vercel Postgres dashboard, create a table based on the schema defined in this repository.
-
+## Instalación
+1. Clona el repositorio:
 ```
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  email VARCHAR(255) NOT NULL,
-  name VARCHAR(255),
-  username VARCHAR(255)
-);
+git clone https://github.com
 ```
-
-Insert a row for testing:
-
+2. Instala las dependencias:
 ```
-INSERT INTO users (id, email, name, username) VALUES (1, 'me@site.com', 'Me', 'username');
+npm install
+```
+3. Crea un archivo .env con las variables necesarias para la conexión con la API de GPT-4 y los datos de autenticación
+4. Ejecuta la aplicación en modo desarrollo:
+```
+npm run dev
 ```
 
-Copy the `.env.example` file to `.env` and update the values.
+Debería poder ingresar a la aplicación por http://localhost:3000.
 
-Finally, run the following commands to start the development server:
-
-```
-pnpm install
-pnpm dev
-```
-
-You should now be able to access the application at http://localhost:3000.
+## Uso
+1. Selecciona una categoría de lectura.
+2. Lee el contenido generado por la IA.
+3. Responde las preguntas de la evaluación.
+4. Revisa la retroalimentación personalizada y consulta tus evaluaciones pasadas.

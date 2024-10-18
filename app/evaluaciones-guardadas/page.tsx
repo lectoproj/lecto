@@ -12,6 +12,10 @@ import {
 import ArrowRight from '../../components/images/back-button.png'; // Import the arrow icon for visual indication
 import Image from 'next/image'; // Import Next.js image component for optimized images
 
+export const metadata = {
+  title: 'Historial de evaluaciones | Lecto'
+};
+
 const EvaluacionesPage = () => {
   // State to track the selected row index
   const [selectedRow, setSelectedRow] = React.useState<number | null>(null);

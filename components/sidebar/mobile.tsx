@@ -28,7 +28,7 @@ const Mobile = () => {
             <Sheet>
             <SheetTrigger asChild>
                 <Button variant="ghost" className="lg:hidden">
-                <Menu className="h-6 w-6 text-green-500" />
+                <Menu className="h-6 w-6 text-amber-900" />
                 </Button>
             </SheetTrigger>
             <SheetContent
@@ -39,55 +39,55 @@ const Mobile = () => {
                 <div className="flex h-[60px] items-center border-b px-5 ">
                     <Link className="flex items-center gap-2 font-semibold" href="/">
                     <Logo />
-                    <span className="text-green-600">Lecto</span>
+                    <span className="text-amber-900">Lecto</span>
                     </Link>
                 </div>
                 <div className="flex-1 overflow-auto py-2">
                     <nav className="grid items-start px-4 text-sm font-medium">
                     <NavItem href="/">
-                        <Home className="h-4 w-4 text-green-500" />
+                        <Home className="h-4 w-4 text-amber-900" />
                         Inicio
                     </NavItem>
                     {showLecturas && (
                         <NavItem href="/lecturas">
-                            <BookPlus className="h-4 w-4 text-green-500" />
+                            <BookPlus className="h-4 w-4 text-amber-900" />
                             Lectura diaria
                         </NavItem>
                     )}
                     {userInfo?.email ? (
                         <>
                     <NavItem href="/evaluaciones-guardadas">
-                        <Bookmark className="h-4 w-4 text-green-500" />
+                        <Bookmark className="h-4 w-4 text-amber-900" />
                         Historial de evaluaciones
                     </NavItem>
                     <NavItem href="/perfil">
-                        <User className="h-4 w-4 text-green-500" />
+                        <User className="h-4 w-4 text-amber-900" />
                         Perfil
                     </NavItem>
                     <NavItem href="/salon-de-logros">
-                        <Gem className="h-4 w-4 text-green-500" />
+                        <Gem className="h-4 w-4 text-amber-900" />
                         Salón de logros
                     </NavItem>
                     <NavItem href="/racha-de-lectura">
-                        <CopyCheck className="h-4 w-4 text-green-500" />
+                        <CopyCheck className="h-4 w-4 text-amber-900" />
                         Racha de lectura
                     </NavItem>
                     </>): null
                     }
                     {userInfo?.preCount < 1 && (
                         <NavItem href="/pretest">
-                            <BookPlus className="h-4 w-4 text-green-500" />
+                            <BookPlus className="h-4 w-4 text-amber-900" />
                             Tu primera evaluación
                         </NavItem>
                         )}
                     {showPosttest && (
                         <NavItem href="/posttest">
-                            <BookPlus className="h-4 w-4 text-green-500" />
+                            <BookPlus className="h-4 w-4 text-amber-900" />
                             Evaluación de control
                         </NavItem>
                     )}
                     <NavItem href="/qa">
-                        <MessageCircleQuestion className="h-4 w-4" />
+                        <MessageCircleQuestion className="h-4 w-4 text-amber-900" />
                         Preguntas frecuentes
                     </NavItem>
                     </nav>

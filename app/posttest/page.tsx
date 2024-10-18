@@ -6,6 +6,10 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { LoadingSpinner } from '@/components/icons';
 
+export const metadata = {
+  title: 'Evaluación de control | Lecto'
+};
+
 const PostTest = () => {
   const router = useRouter();
   const [categoriaId, setCategoriaId] = useState<string | null>(null);

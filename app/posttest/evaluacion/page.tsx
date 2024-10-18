@@ -12,9 +12,9 @@ import { isValid, string } from 'zod';
 import { LoadingSpinner, TickLogo } from '@/components/icons';
 import { AuthContext } from 'app/contextApi/authContext';
 
-export const metadata = {
-  title: 'Evaluación de control | Lecto'
-};
+// export const metadata = {
+//   title: 'Evaluación de control | Lecto'
+// };
 interface Pregunta {
   tipo: 'fill-in-the-blank' | 'mcq' | 'radio';
   pregunta: string;

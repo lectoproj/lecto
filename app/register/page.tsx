@@ -14,9 +14,9 @@ import {
   CardDescription
 } from '@/components/ui/card'; // Custom card component
 
-export const metadata = {
-  title: 'Registrate | Lecto'
-};
+// export const metadata = {
+//   title: 'Registrate | Lecto'
+// };
 
 export default function RegisterForm() {
   const [email, setEmail] = useState('');

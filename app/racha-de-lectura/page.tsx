@@ -14,9 +14,9 @@ interface SteakData {
   fecha: string; // Date field as a string, expected format: 'YYYY-MM-DD'
 }
 
-export const metadata = {
-  title: 'Racha de lecturas | Lecto'
-};
+// export const metadata = {
+//   title: 'Racha de lecturas | Lecto'
+// };
 
 // Main component for the calendar page
 export default function CalendarPage() {

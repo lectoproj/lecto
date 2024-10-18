@@ -5,9 +5,9 @@ import React, { useEffect, useState } from 'react'; // Importing necessary React
 import Gold from '../../components/images/gold.jpg'; // Importing the image for unlocked achievements
 import Locked from '../../components/images/lock.jpg'; // Importing the image for locked achievements
 
-export const metadata = {
-  title: 'Salón de logros | Lecto'
-};
+// export const metadata = {
+//   title: 'Salón de logros | Lecto'
+// };
 
 // Main component for the Home page
 export default function Home() {

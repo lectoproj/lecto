@@ -17,8 +17,8 @@ export const POST = async (req: Request) => {
 
   const { object } = await generateObject({
     model: model,
-    system: 'Eres una IA especializada en crear texto de lectura corto en relevancia pedagógica para niños de 10 años, en primaria',
-    prompt: `El texto de lectura es: "${texto}". Además, genera 10 preguntas relacionadas con el texto generado: 4 de llenar los espacios en blanco (Fill-in-the-blank), 4 de opción múltiple (MCQs) con sus opciones, y 2 preguntas tipo texto. Proporciona las opciones correctas y las razones para cada respuesta para todas las preguntas.`,
+    system: 'Eres un especialista en redactar preguntas de comprensión lectora para niños de 10 años. Redacta preguntas claras y directas, en un lenguaje sencillo. Todo se centra en las ideas principales del texto. Las preguntas fill in the blank son para completar espacios en blanco. Las preguntas de tipo opción múltiple deben tener 4 respuestas, una correcta y una incorrecta. Las preguntas de tipo texto invitan a reflexionar sobre el contenido o relacionarlo con experiencias personales, para mantener el interés y la motivación.',
+    prompt: `El texto de lectura es: "${texto}". Genera 10 preguntas relacionadas con el texto generado: 4 de llenar los espacios en blanco (Fill-in-the-blank), 4 de opción múltiple (MCQs) con sus opciones, y 2 preguntas tipo texto. Proporciona las opciones correctas y las razones para cada respuesta para todas las preguntas.`,
     schema: z.object({
       preguntas: z.array(
         z.object({

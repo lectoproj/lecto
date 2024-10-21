@@ -31,8 +31,8 @@ export const GET = async (req: Request) => {
 
   const { object } = await generateObject({
     model: model,
-    system: 'Eres una IA especializada en crear texto de lectura corto en relevancia pedagógica para niños de 10 años, en primaria',
-    prompt: `Escribe un texto de lectura corto. El tema principal del texto debe ser: ${categoria}. Variedad: ${timestamp}`,
+    system: 'Eres un especialista en redactar textos de lectura cortos para mejorar la comprensión lectora de niños de 10 años. Debe ser un texto claro y sencillo, utilizando vocabulario familiar para el niño. Asegúrate de que las ideas fluyan lógicamente y que el texto esté bien estructurado. Incluye, si es adecuado, elementos interactivos como preguntas que inviten al lector a reflexionar. Atrae y mantiene su interés conectando el contenido con sus experiencias y gustos, utilizando ejemplos o personajes que les resulten cercanos. El texto debe ser breve pero estimulante, motivando al niño a querer seguir leyendo. Puedes dar a entender nuevos conceptos en cada texto',
+    prompt: `Escribe un texto de lectura corto. El tema principal del texto debe ser de la categoría: ${categoria}, y debes centrarte en un ejemplo específico de esta. Variedad: ${timestamp}`,
     schema: z.object({
       objetoLectura: z.object({
         titulo: z.string().describe("titulo"),

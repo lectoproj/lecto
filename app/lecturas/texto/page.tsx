@@ -97,23 +97,25 @@ const TextoPage = () => {
         </h1>
       </div>
       <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
-        <div className="flex flex-col items-center gap-1 text-justify p-4">
+        <div className="flex flex-col items-center gap-2 text-justify p-4 w-full max-w-2xl">
           {loading ? (
-            // <div className="flex flex-col space-y-3 py-2">
-            //   <Skeleton className="h-4 w-1/2 rounded-xl" />
-            //   <div className="space-y-2">
-            //     <Skeleton className="h-4 w-full" />
-            //     <Skeleton className="h-4 w-full" />
-            //     <Skeleton className="h-4 w-full" />
-            //     <Skeleton className="h-4 w-1/2" />
-            //   </div>
-            // </div>
-            <div>Cargando...
+            <div className="space-y-4 w-full">
+              <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                Escribiendo una historia...
+              </h3>
+              <Skeleton className="h-8 w-3/4" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-10 w-40" />
             </div>
-            
           ) : lectura ? (
             <>
-              <h2>{lectura.titulo}</h2>
+              <h2 className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+                {lectura.titulo}
+              </h2>
               <p>{lectura.texto}</p>
               <Button type="button" onClick={handleIniciarEvaluacion}>
                 Iniciar Evaluación {loadingQuiz ? <LoadingSpinner /> : null}

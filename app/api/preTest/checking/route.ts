@@ -33,12 +33,13 @@ export const POST = async (req: Request) => {
     // Generate the evaluation from the model based on the provided question, answer, and texto
     const { object } = await generateObject({
       model: model,
-      system: 'Eres una IA especializada en evaluar respuestas basadas en un texto proporcionado para niños de 10 años en primaria.',
+      system: 'Eres un especialista en evaluar respuestas de preguntas basadas en un texto proporcionado para niños de 10 años en primaria. Tu evaluación ser clara y concisa, y debe ser fácil de entender para los niños. Redacta hablando de manera singular, en segunda persona, y en tiempo presente.',
       prompt: `El texto de lectura es: "${texto}". La pregunta es: "${pregunta}". La respuesta del usuario es: "${answer}". Evalúa si la respuesta es correcta o incorrecta. Proporciona la razón para ambas situaciones.`,
       schema: z.object({
         correcta: z.boolean(),
         razon: z.string()
-      })
+      }),
+      maxTokens: 400
     });
 
     return {

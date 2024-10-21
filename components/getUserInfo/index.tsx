@@ -87,7 +87,7 @@ const UserInfo: React.FC = () => {
           <>
             {renderInputField('name_tutor', 'Nombre del Tutor', 'text', true)}
             {renderInputField('email_tutor', 'Email del Tutor', 'email', true)}
-            {renderInputField('fecha_nacimiento', 'Fecha Nacimiento', 'date', true, current)}
+            {/* {renderInputField('fecha_nacimiento', 'Fecha Nacimiento', 'date', true, current)} */}
           </>
         )}
 

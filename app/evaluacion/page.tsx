@@ -11,6 +11,8 @@ import { Button } from '@/components/ui/button';
 import { isValid, string } from 'zod';
 import { LoadingSpinner, TickLogo } from '@/components/icons';
 import { AuthContext } from 'app/contextApi/authContext';
+import { motion } from 'framer-motion'
+import { Award, Brain, CheckCircle, Medal, Star, Trophy } from 'lucide-react'
 interface Pregunta {
   tipo: 'fill-in-the-blank' | 'mcq' | 'radio';
   pregunta: string;
@@ -233,6 +235,14 @@ const EvaluacionPage: React.FC = () => {
       setStartQuiz('result');
     }
   };
+
+  const icons = [
+    { Icon: CheckCircle, color: 'text-green-500' },
+    { Icon: Brain, color: 'text-blue-500' },
+    { Icon: Trophy, color: 'text-yellow-500' },
+    { Icon: Medal, color: 'text-purple-500' },
+    { Icon: Star, color: 'text-pink-500' },
+  ]
 
   return (
     <main

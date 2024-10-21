@@ -1,6 +1,12 @@
 'use client';
 
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
 import { useRouter } from 'next/navigation';
 import Modal from '../../components/Model'; // Ensure the path and case are correct
 import { Input } from '@/components/ui/input';
@@ -11,8 +17,8 @@ import { Button } from '@/components/ui/button';
 import { isValid, string } from 'zod';
 import { LoadingSpinner, TickLogo } from '@/components/icons';
 import { AuthContext } from 'app/contextApi/authContext';
-import { motion } from 'framer-motion'
-import { Award, Brain, CheckCircle, Medal, Star, Trophy } from 'lucide-react'
+import { motion } from 'framer-motion';
+import { Award, Brain, CheckCircle, Medal, Star, Trophy } from 'lucide-react';
 interface Pregunta {
   tipo: 'fill-in-the-blank' | 'mcq' | 'radio';
   pregunta: string;
@@ -78,9 +84,7 @@ const EvaluacionPage: React.FC = () => {
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase();
 
-
   const updateIsValid = (question?: Pregunta) => {
-
     if (
       !question ||
       question.answer === undefined ||
@@ -94,24 +98,24 @@ const EvaluacionPage: React.FC = () => {
     }
 
     // Normalize strings to ignore accents and case sensitivity
- 
+
     // Check if answer is valid
     return (
       normalizeString(question.answer) == normalizeString(question.correcta)
     );
-  }
+  };
   const handleChange = (index: number, value: any) => {
     setQuiz((prevQuiz: any) => {
       if (!prevQuiz) return prevQuiz;
-  
+
       const newQuiz = [...prevQuiz];
       const currentQuestion = { ...newQuiz[index] }; // Clone the current question to ensure immutability
-  
+
       // First, update the answer for the current question
       currentQuestion.answer = value;
-  
+
       let isValid = false;
-  
+
       if (currentQuestion?.tipo === 'mcq') {
         // For MCQ type, check if the value is equal to 'correcta'
         isValid = currentQuestion?.correcta === value;
@@ -119,18 +123,16 @@ const EvaluacionPage: React.FC = () => {
         // For non-MCQ types, use updateIsValid
         isValid = updateIsValid(currentQuestion);
       }
-  
+
       // Update the isvalid field for the current question
       currentQuestion.isvalid = isValid;
-  
+
       // Replace the updated question back into the array
       newQuiz[index] = currentQuestion;
-  
-  
+
       return newQuiz;
     });
   };
-  
 
   const selectedQuestion: Pregunta | undefined = useMemo(() => {
     if (!quiz || !quiz[selectedQuestionIndex]) return undefined;
@@ -241,8 +243,8 @@ const EvaluacionPage: React.FC = () => {
     { Icon: Brain, color: 'text-blue-500' },
     { Icon: Trophy, color: 'text-yellow-500' },
     { Icon: Medal, color: 'text-purple-500' },
-    { Icon: Star, color: 'text-pink-500' },
-  ]
+    { Icon: Star, color: 'text-pink-500' }
+  ];
 
   return (
     <main
@@ -293,7 +295,7 @@ const EvaluacionPage: React.FC = () => {
         </>
       ) : startQuiz == 'result' ? (
         <>
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <h1 className="text-lg font-semibold md:text-2xl">Resultado</h1>
           </div>
           <div className="flex flex-col gap-10 items-center">
@@ -313,6 +315,58 @@ const EvaluacionPage: React.FC = () => {
             >
               Continuar
             </Button>
+          </div> */}
+          <div className="flex flex-col items-center justify-center min-h-screen p-4">
+            <div className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full space-y-8">
+              <h1 className="text-3xl font-bold text-center text-gray-800">
+                Resultado
+              </h1>
+              <div className="flex flex-col items-center space-y-6">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl text-gray-700 font-semibold text-center"
+                >
+                  ¡Completaste la evaluación!
+                </motion.p>
+                <div className="flex justify-center space-x-4">
+                  {icons.map(({ Icon, color }, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Icon className={`w-10 h-10 ${color}`} />
+                    </motion.div>
+                  ))}
+                </div>
+                <p className="text-lg text-gray-600 text-center">
+                  Ya vimos tus respuestas, revisa tu retroalimentación y comentarios.
+                </p>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5, type: 'spring' }}
+                  className="flex items-center space-x-2"
+                >
+                  <Award className="w-8 h-8 text-yellow-500" />
+                  <p className="text-3xl text-gray-800 font-bold">
+                    Puntos: {`${score?.gained}/${score?.total}`}
+                  </p>
+                </motion.div>
+                <Button
+                  onClick={() => {
+                    setSelectedQuestionIndex(0);
+                    setStartQuiz('review');
+                  }}
+                  className="w-full"
+                >
+                  Continuar
+                </Button>
+              </div>
+            </div>
           </div>
         </>
       ) : (

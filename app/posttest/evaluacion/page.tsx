@@ -253,7 +253,7 @@ const EvaluacionPage: React.FC = () => {
                     ))}
                   </RadioGroup>
                 ) : (
-                  <Input
+                  <Input className='border-yellow-950'
                     value={selectedQuestion?.answer}
                     onChange={(e) => {
                       handleChange(selectedQuestionIndex, e.target.value);
@@ -263,7 +263,7 @@ const EvaluacionPage: React.FC = () => {
               </div>
 
               <Button className="mt-3" onClick={SubmitAnswer}>
-                Next {loadingQuiz ? <LoadingSpinner /> : null}
+                Siguiente pregunta {loadingQuiz ? <LoadingSpinner /> : null}
               </Button>
             </div>
           </div>
@@ -271,7 +271,7 @@ const EvaluacionPage: React.FC = () => {
       ) : startQuiz == 'result' ? (
         <>
           <div className="flex items-center">
-            <h1 className="text-lg font-semibold md:text-2xl">Result</h1>
+            <h1 className="text-lg font-semibold md:text-2xl">Resultado</h1>
           </div>
           <div className="flex flex-col gap-10 items-center">
             <p className="text-4xl text-black font-bold">¡Felicitaciones!</p>

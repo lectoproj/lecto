@@ -113,7 +113,7 @@ export default function RegisterForm() {
             />
           </div>
           <div className="grid gap-2">
-            <Label htmlFor="fecha_nacimiento">Fecha de nacimiento</Label>
+            <Label htmlFor="fecha_nacimiento">Fecha de nacimiento del estudiante</Label>
             <Input
               id="fecha_nacimiento"
               type="date"

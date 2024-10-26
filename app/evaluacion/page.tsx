@@ -278,7 +278,7 @@ const EvaluacionPage: React.FC = () => {
                     ))}
                   </RadioGroup>
                 ) : (
-                  <Input
+                  <Input className='border-yellow-950'
                     value={selectedQuestion?.answer}
                     onChange={(e) => {
                       handleChange(selectedQuestionIndex, e.target.value);

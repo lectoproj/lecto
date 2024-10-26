@@ -9,6 +9,7 @@ import Navbar from '@/components/navbar';
 import { AuthContext } from 'app/contextApi/authContext';
 import UserInfo from '../getUserInfo';
 import { usePathname, useRouter } from 'next/navigation';
+import { NavigationGuard } from '../NavigationGuard';
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
@@ -63,6 +64,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
+    <NavigationGuard>
     <div className="grid min-h-screen w-full lg:grid-cols-[280px_1fr]">
       {/* Desktop layout */}
       <div className="hidden border-r lg:block">
@@ -102,6 +104,7 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         )}
       </div>
     </div>
+    </NavigationGuard>
   );
 };
 

@@ -32,7 +32,7 @@ export default function LoginForm() {
     setLoading(false);
 
     if (!res?.ok) {
-      setError('Sign-in failed. Please try again.');
+      setError('El ingreso por email fallo. Por favor intenta nuevamente.');
     }
   };
 
@@ -123,7 +123,7 @@ export default function LoginForm() {
 
           {error && <p className="text-red-500">{error}</p>}
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? 'Ingresando...' : 'Ingresa'}
           </Button>
           <div className="flex flex-col gap-2">
             {/* <Button
@@ -141,7 +141,7 @@ export default function LoginForm() {
               onClick={() => handleSignIn('google')}
               disabled={loading}
             >
-              {loading ? 'Loading...' : 'Sign in with Google'}
+              {loading ? 'Cargando...' : 'Inicia sesión con Google'}
             </Button>
           </div>
         </form>

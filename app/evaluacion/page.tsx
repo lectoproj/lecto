@@ -69,7 +69,7 @@ const EvaluacionPage: React.FC = () => {
       if (selectedQuestion?.answer) {
         setSelectedQuestionIndex((prev) => prev + 1);
       } else {
-        alert('Please fill the answer!');
+        alert('Por favor escribe o selecciona una respuesta');
       }
     } else if (startQuiz == 'quiz' && selectedQuestionIndex == 9) {
       getScores();
@@ -278,7 +278,10 @@ const EvaluacionPage: React.FC = () => {
                     ))}
                   </RadioGroup>
                 ) : (
-                  <Input className='border-yellow-950'
+                  <Input 
+                    className="border-yellow-950 w-72"
+                    placeholder="Escribe acá"
+                    autoFocus={true}
                     value={selectedQuestion?.answer}
                     onChange={(e) => {
                       handleChange(selectedQuestionIndex, e.target.value);

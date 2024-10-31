@@ -97,19 +97,19 @@ const TextoPage = () => {
         </h1>
       </div>
       <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
-        <div className="flex flex-col items-center gap-2 text-justify p-4 w-full max-w-2xl">
+        <div className="flex flex-col items-center gap-2 text-justify w-full max-w-2xl">
           {loading ? (
             <div className="space-y-4 w-full">
               <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
                 Escribiendo una historia...
               </h3>
-              <Skeleton className="h-8 w-3/4" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-full" />
-              <Skeleton className="h-4 w-3/4" />
-              <Skeleton className="h-10 w-40" />
+              <Skeleton className="h-8 w-3/4 bg-amber-950" />
+              <Skeleton className="h-4 w-full bg-amber-950" />
+              <Skeleton className="h-4 w-full bg-amber-950" />
+              <Skeleton className="h-4 w-full bg-amber-950" />
+              <Skeleton className="h-4 w-full bg-amber-950" />
+              <Skeleton className="h-4 w-3/4 bg-amber-950" />
+              <Skeleton className="h-10 w-40 bg-amber-950" />
             </div>
           ) : lectura ? (
             <>

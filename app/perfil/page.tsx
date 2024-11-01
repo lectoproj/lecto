@@ -1,10 +1,7 @@
 "use client"; // Ensure it works as a Client Component
 
 import React, { useEffect, useState } from "react"; // Import necessary hooks from React
-
-// export const metadata = {
-//   title: 'Mi perfil | Lecto'
-// };
+import { redirect } from 'next/navigation';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
